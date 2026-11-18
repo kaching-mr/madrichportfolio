@@ -25,8 +25,4 @@ jobs:
           create_credentials_file: true
 
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          projectId: madrich-portfolio
-          channelId: live
+        run: npx firebase-tools deploy --only hosting --project madrich-portfolio
