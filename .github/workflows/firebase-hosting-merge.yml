@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write # Required for keyless Workload Identity authentication
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -22,10 +22,7 @@ jobs:
         with:
           workload_identity_provider: 'projects/442916707532/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
           service_account: 'github-action-1463335459@madrich-portfolio.iam.gserviceaccount.com'
-          create_credentials_file: true # Generates temporary credentials file for Firebase CLI
-
-      - name: Install dependencies and build
-        run: npm ci && npm run build
+          create_credentials_file: true
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
